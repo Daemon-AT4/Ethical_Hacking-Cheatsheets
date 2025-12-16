@@ -90,7 +90,7 @@
 
 **`[TARGET_AUDIENCE]`** Red Teamers • Pentesters • CTF Players • Security Researchers
 
- 
+> .MD cheat sheets were made with AI
 
 ---
 
