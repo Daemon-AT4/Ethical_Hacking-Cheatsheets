@@ -21,6 +21,7 @@
 ║  ██║     ███████╗██║  ██║██║ ╚████║███████╗   ██║                             ║
 ║  ╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝                             ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
+```
 
 <!-- BADGES -->
 ![Cybersecurity](https://img.shields.io/badge/CYBERSECURITY-FF0000?style=for-the-badge&logo=hackthebox&logoColor=white)
