@@ -1,12 +1,53 @@
-# 🧽 Sponge Command Cheat Sheet
+<!-- CYBERPUNK HEADER -->
+<div align="center">
 
-## 📖 Introduction
+```
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  ███████╗██████╗  ██████╗ ███╗   ██╗ ██████╗ ███████╗                        ║
+║  ██╔════╝██╔══██╗██╔═══██╗████╗  ██║██╔════╝ ██╔════╝                        ║
+║  ███████╗██████╔╝██║   ██║██╔██╗ ██║██║  ███╗█████╗                          ║
+║  ╚════██║██╔═══╝ ██║   ██║██║╚██╗██║██║   ██║██╔══╝                          ║
+║  ███████║██║     ╚██████╔╝██║ ╚████║╚██████╔╝███████╗                        ║
+║  ╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚══════╝                        ║
+║                                                                              ║
+║                🧽 [ SAFE IN-PLACE FILE EDITING ] 🧽                          ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+```
+
+<!-- BADGES -->
+![Tool](https://img.shields.io/badge/TOOL-Sponge-yellow?style=for-the-badge&logo=gnubash&logoColor=white)
+![moreutils](https://img.shields.io/badge/PACKAGE-moreutils-00FF00?style=for-the-badge&logo=linux&logoColor=white)
+![Category](https://img.shields.io/badge/CATEGORY-CLI_Utils-blue?style=for-the-badge)
+
+[![Author](https://img.shields.io/badge/Author-0xNetrunner-00FF00?style=flat-square&logo=github)](https://github.com/00xNetrunner)
+![Platform](https://img.shields.io/badge/Platform-Linux%2FmacOS-orange?style=flat-square)
+![Shell](https://img.shields.io/badge/Shell-Bash%2FZsh-green?style=flat-square)
+
+</div>
+
+---
+
+> **`[SYSTEM]`** A command-line utility that reads all input before writing to avoid data loss
+>
+> **`[STATUS]`** Module: `LOADED` | Package: `moreutils` | Function: `SAFE_PIPE_WRITE`
+
+---
+
+## 📖 >_ Introduction
+
+```
+> Loading module: Sponge.so...
+> Initializing buffer system...
+> Status: READY
+```
 
 `sponge` is a command-line utility from the **moreutils** package that reads all input from stdin before writing to a file. Unlike standard shell redirects (`>`), which open the output file immediately (potentially truncating it before reading completes), `sponge` buffers the entire input in memory first, then writes it out.
 
 This "read-all-then-write" behavior makes `sponge` essential for **safely modifying files in-place** within pipelines.
 
-### 🔧 Installation
+---
+
+## 📦 Installation
 
 ```bash
 # Debian/Ubuntu
@@ -22,7 +63,9 @@ sudo pacman -S moreutils
 brew install moreutils
 ```
 
-### ⚙️ Basic Syntax
+---
+
+## ⚙️ Basic Syntax
 
 ```bash
 command | sponge [OPTIONS] filename
@@ -31,7 +74,7 @@ command | sponge [OPTIONS] filename
 ### 🎛️ Options
 
 | Option | Description |
-|--------|-------------|
+|:-------|:------------|
 | `-a` | Append to file instead of overwriting |
 | No options | Overwrite the file with buffered content |
 
@@ -426,33 +469,33 @@ grep 'WARN' new_logs.txt | sponge -a all_warnings.txt
 
 ## 💡 Pro Tips
 
-1. **Memory Considerations**: `sponge` buffers all input in memory. For very large files (larger than available RAM), consider alternatives or ensure sufficient memory.
+```
+[1] Memory Considerations: sponge buffers all input in memory. For very large files
+    (larger than available RAM), consider alternatives or ensure sufficient memory.
 
-2. **Atomic Operations**: When possible, `sponge` updates files atomically by writing to a temp file first, then renaming.
+[2] Atomic Operations: When possible, sponge updates files atomically by writing
+    to a temp file first, then renaming.
 
-3. **Preserve Permissions**: `sponge` attempts to preserve file permissions when overwriting.
+[3] Preserve Permissions: sponge attempts to preserve file permissions when overwriting.
 
-4. **Test First**: Always test your pipeline without `sponge` first to verify output:
-   ```bash
-   # Test output first
-   grep -v 'pattern' file.txt | head
-   
-   # Then apply with sponge
-   grep -v 'pattern' file.txt | sponge file.txt
-   ```
+[4] Test First: Always test your pipeline without sponge first to verify output:
+    # Test output first
+    grep -v 'pattern' file.txt | head
 
-5. **Backup Important Files**: For critical files, make a backup first:
-   ```bash
-   cp important.txt important.txt.bak
-   sed 's/old/new/g' important.txt | sponge important.txt
-   ```
+    # Then apply with sponge
+    grep -v 'pattern' file.txt | sponge file.txt
+
+[5] Backup Important Files: For critical files, make a backup first:
+    cp important.txt important.txt.bak
+    sed 's/old/new/g' important.txt | sponge important.txt
+```
 
 ---
 
 ## 📊 Quick Reference Table
 
 | Tool | Common Use with Sponge | Example |
-|------|------------------------|---------|
+|:-----|:-----------------------|:--------|
 | `grep` | Filter lines in-place | `grep 'keep' f.txt \| sponge f.txt` |
 | `grep -v` | Remove lines in-place | `grep -v 'remove' f.txt \| sponge f.txt` |
 | `sed` | Find/replace in-place | `sed 's/a/b/g' f.txt \| sponge f.txt` |
@@ -465,11 +508,42 @@ grep 'WARN' new_logs.txt | sponge -a all_warnings.txt
 
 ## 🔗 See Also
 
-- `tee` - Write to file while also passing to stdout (but not safe for in-place)
-- `moreutils` - The package containing sponge and other useful utilities
-- `sed -i` - Built-in in-place editing (but requires temp file internally)
-- `sort -o` - Sort's built-in in-place output option
+| Tool | Description |
+|:-----|:------------|
+| `tee` | Write to file while also passing to stdout (but not safe for in-place) |
+| `moreutils` | The package containing sponge and other useful utilities |
+| `sed -i` | Built-in in-place editing (but requires temp file internally) |
+| `sort -o` | Sort's built-in in-place output option |
 
 ---
 
-*Created for efficient command-line text processing workflows* 🐧
+<div align="center">
+
+## 👤 >_ Author.Info()
+
+```
+╔══════════════════════════════════════════════════════════════╗
+║                     [ NETRUNNER PROFILE ]                    ║
+╠══════════════════════════════════════════════════════════════╣
+║  HANDLE      :  0xNetrunner                                  ║
+║  CLASS       :  4th Year Ethical Hacking Student             ║
+║  SPECIALTY   :  CLI Tools | Linux Administration             ║
+║  STATUS      :  Active                                       ║
+╚══════════════════════════════════════════════════════════════╝
+```
+
+[![GitHub](https://img.shields.io/badge/GitHub-0xNetrunner-181717?style=for-the-badge&logo=github)](https://github.com/00xNetrunner)
+
+---
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                  [ END OF TRANSMISSION ]                      ║
+║           Efficient command-line text processing 🐧           ║
+╚═══════════════════════════════════════════════════════════════╝
+```
+
+![Sponge](https://img.shields.io/badge/TOOL-Sponge-yellow?style=flat-square)
+![moreutils](https://img.shields.io/badge/PACKAGE-moreutils-green?style=flat-square)
+
+</div>

