@@ -1,35 +1,4 @@
-<!-- CYBERPUNK HEADER -->
-<div align="center">
-
-```
-╔══════════════════════════════════════════════════════════════════════════════╗
-║   ██████╗███████╗██████╗ ████████╗██╗██████╗ ██╗   ██╗                       ║
-║  ██╔════╝██╔════╝██╔══██╗╚══██╔══╝██║██╔══██╗╚██╗ ██╔╝                       ║
-║  ██║     █████╗  ██████╔╝   ██║   ██║██████╔╝ ╚████╔╝                        ║
-║  ██║     ██╔══╝  ██╔══██╗   ██║   ██║██╔═══╝   ╚██╔╝                         ║
-║  ╚██████╗███████╗██║  ██║   ██║   ██║██║        ██║                          ║
-║   ╚═════╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝        ╚═╝                          ║
-║                                                                              ║
-║             🔐 [ AD CS EXPLOITATION TOOLKIT ] 🔐                             ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-```
-
-<!-- BADGES -->
-![Tool](https://img.shields.io/badge/TOOL-Certipy--AD-orange?style=for-the-badge&logo=python&logoColor=white)
-![Active Directory](https://img.shields.io/badge/AD_CS-Certificate_Services-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
-![ESC Vulnerabilities](https://img.shields.io/badge/ESC1--ESC16-EXPLOITATION-FF0000?style=for-the-badge&logo=hackthebox&logoColor=white)
-
-[![Author](https://img.shields.io/badge/Author-0xNetrunner-00FF00?style=flat-square&logo=github)](https://github.com/00xNetrunner)
-![Category](https://img.shields.io/badge/Category-ADCS_Exploitation-purple?style=flat-square)
-![Certificates](https://img.shields.io/badge/Target-Certificates-blue?style=flat-square)
-
-</div>
-
----
-
-> **`[SYSTEM]`** Active Directory Certificate Services enumeration and exploitation toolkit
->
-> **`[STATUS]`** Module: `LOADED` | Target: `AD_CS` | Vulnerabilities: `ESC1-ESC16`
+> **A comprehensive guide for Active Directory Certificate Services enumeration and exploitation using Certipy-ad**
 
 ---
 

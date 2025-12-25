@@ -841,33 +841,4 @@ proxychains bloodhound-python -c all -u USER -p PASS -d DOMAIN -ns DC_IP --zip
 
 ---
 
-<div align="center">
-
-## 👤 >_ Author.Info()
-
-```
-╔══════════════════════════════════════════════════════════════╗
-║                     [ NETRUNNER PROFILE ]                    ║
-╠══════════════════════════════════════════════════════════════╣
-║  HANDLE      :  0xNetrunner                                  ║
-║  CLASS       :  4th Year Ethical Hacking Student             ║
-║  SPECIALTY   :  Active Directory | Penetration Testing       ║
-║  STATUS      :  Active                                       ║
-╚══════════════════════════════════════════════════════════════╝
-```
-
-[![GitHub](https://img.shields.io/badge/GitHub-0xNetrunner-181717?style=for-the-badge&logo=github)](https://github.com/00xNetrunner)
-
----
-
-```
-╔═══════════════════════════════════════════════════════════════╗
-║                  [ END OF TRANSMISSION ]                      ║
-║                    HACK THE PLANET! 🌐                        ║
-╚═══════════════════════════════════════════════════════════════╝
-```
-
-![BloodHound](https://img.shields.io/badge/TOOL-BloodHound--Python-red?style=flat-square)
-![AD Enumeration](https://img.shields.io/badge/AD-ENUMERATION-blue?style=flat-square)
-
-</div>
+**Created by Claude | For Ethical Hacking & Penetration Testing** 🎓🔐
