@@ -40,6 +40,7 @@
 > **`[SYSTEM]`** Status: `ONLINE` | Access Level: `PUBLIC` | Protocol: `SECURE`
 >
 > **`[WARNING]`** *Execute with caution. Unauthorized access is prohibited. For educational purposes only.*
+> All guides were made by 00xNetrunner, were originally in an obsidian vault, they were reformatted for github using claude code
 
 ---
 
