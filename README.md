@@ -94,6 +94,7 @@
 | 🩸 [**BloodHound (Python)**](Active-Directory/BloodHound-Python_Cheatsheet.md) | Remote AD enumeration ingestor | `ingestor` `python` |
 | 🔴 [**BloodyAD**](Active-Directory/BloodyAD.md) | AD privilege escalation framework | `priv-esc` `ldap` |
 | 🔏 [**Certipy**](Active-Directory/Certipy-ad.md) | AD CS exploitation toolkit | `adcs` `certificates` |
+| 🐍 [**Impacket**](Active-Directory/Impacket_Cheatsheet.md) | Python toolkit for Windows protocols | `smb` `kerberos` `rpc` |
 | 📄 [**RBCD**](Active-Directory/rbcd-cheatsheet.pdf) | Resource-based delegation attacks | `delegation` `kerberos` |
 | 🐕 [**SharpHound**](Active-Directory/SharpHound_Cheatsheet.md) | BloodHound C# collector | `collector` `windows` |
  
