@@ -232,6 +232,7 @@
 
 | Tool | Description | Tags |
 |:-----|:------------|:-----|
+| 📂 [**SMBServer**](Misc/smbserver-cheatsheet.md) | Impacket SMB server for file transfer | `smb` `transfer` `impacket` |
 | 🧽 [**Sponge**](Misc/sponge-cheatsheet.md) | Pipe buffer utility | `pipe` `buffer` |
 | 🔒 [**OpenSSL**](Misc/openssl-cheatsheet.pdf) | SSL/TLS toolkit | `ssl` `certs` |
 | 📝 [**Overleaf Archive**](Misc/Overleaf%20Archive.pdf) | LaTeX documentation | `latex` |
