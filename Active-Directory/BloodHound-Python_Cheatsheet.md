@@ -1,10 +1,39 @@
-# 🐍 BloodHound-Python Cheatsheet
+<!-- CYBERPUNK HEADER -->
+<div align="center">
 
-> **Complete guide to using bloodhound-python for remote Active Directory enumeration**
+```
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  ██████╗ ██╗      ██████╗  ██████╗ ██████╗ ██╗  ██╗ ██████╗ ██╗   ██╗███╗   ██╗██████╗  ║
+║  ██╔══██╗██║     ██╔═══██╗██╔═══██╗██╔══██╗██║  ██║██╔═══██╗██║   ██║████╗  ██║██╔══██╗ ║
+║  ██████╔╝██║     ██║   ██║██║   ██║██║  ██║███████║██║   ██║██║   ██║██╔██╗ ██║██║  ██║ ║
+║  ██╔══██╗██║     ██║   ██║██║   ██║██║  ██║██╔══██║██║   ██║██║   ██║██║╚██╗██║██║  ██║ ║
+║  ██████╔╝███████╗╚██████╔╝╚██████╔╝██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║ ╚████║██████╔╝ ║
+║  ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═════╝  ║
+║                                                                              ║
+║                   🐍 [ PYTHON INGESTOR ] 🐍                                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+```
+
+<!-- BADGES -->
+![Tool](https://img.shields.io/badge/TOOL-BloodHound--Python-red?style=for-the-badge&logo=python&logoColor=white)
+![Active Directory](https://img.shields.io/badge/ACTIVE_DIRECTORY-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
+![Enumeration](https://img.shields.io/badge/ENUMERATION-00FF00?style=for-the-badge&logo=hackthebox&logoColor=black)
+
+[![Author](https://img.shields.io/badge/Author-0xNetrunner-00FF00?style=flat-square&logo=github)](https://github.com/00xNetrunner)
+![Category](https://img.shields.io/badge/Category-AD_Recon-purple?style=flat-square)
+![Platform](https://img.shields.io/badge/Platform-Linux-orange?style=flat-square)
+
+</div>
 
 ---
 
-## 📋 Table of Contents
+> **`[SYSTEM]`** Remote Active Directory enumeration ingestor for BloodHound
+>
+> **`[STATUS]`** Module: `LOADED` | Target: `DOMAIN` | Protocol: `LDAP`
+
+---
+
+## 📋 >_ Table.Of.Contents()
 
 - [Overview](#-overview)
 - [Installation](#-installation)
@@ -22,20 +51,29 @@
 
 ## 🎯 Overview
 
+```
+> Loading module: BloodHound_Python.dll...
+> Initializing remote LDAP ingestor...
+> Status: READY
+```
+
 **bloodhound-python** (also known as **BloodHound.py**) is a Python-based ingestor for BloodHound that allows remote data collection from Active Directory environments without needing to execute code on Windows systems.
 
-### Key Features
-- ✅ Remote enumeration from Linux
-- ✅ No code execution on target required
-- ✅ LDAP-based collection
-- ✅ Multiple authentication methods
-- ✅ Kerberos support
-- ✅ Outputs JSON files for BloodHound
+### ⚡ Key Features
 
-### When to Use bloodhound-python vs SharpHound
+```
+[✓] Remote enumeration from Linux
+[✓] No code execution on target required
+[✓] LDAP-based collection
+[✓] Multiple authentication methods
+[✓] Kerberos support
+[✓] Outputs JSON files for BloodHound
+```
+
+### 🆚 When to Use bloodhound-python vs SharpHound
 
 | Scenario | Tool |
-|----------|------|
+|:---------|:-----|
 | Have valid AD credentials, attacking from Linux | **bloodhound-python** |
 | Have shell access on Windows machine | **SharpHound** |
 | Need session enumeration | **SharpHound** |
@@ -47,7 +85,7 @@
 
 ## 📦 Installation
 
-### Kali Linux (Pre-installed)
+### 🐧 Kali Linux (Pre-installed)
 
 ```bash
 # Usually pre-installed on Kali
@@ -58,7 +96,7 @@ sudo apt update
 sudo apt install bloodhound.py
 ```
 
-### Manual Installation (pip)
+### 🔧 Manual Installation (pip)
 
 ```bash
 # Install via pip
@@ -73,7 +111,7 @@ pip3 install .
 bloodhound-python --version
 ```
 
-### Dependencies
+### 📚 Dependencies
 
 ```bash
 # Required dependencies
@@ -104,10 +142,10 @@ bloodhound-python -c all -u judith.mader -p judith09 -d certified.htb -ns 10.10.
 bloodhound-python -c all -u judith.mader -p judith09 -d certified.htb -ns 10.10.11.41 --collectionmethod all
 ```
 
-### Essential Parameters
+### 📊 Essential Parameters
 
 | Parameter | Description | Example |
-|-----------|-------------|---------|
+|:----------|:------------|:--------|
 | `-c, --collectionmethod` | Collection method(s) | `-c all` |
 | `-u, --username` | Username | `-u judith.mader` |
 | `-p, --password` | Password | `-p judith09` |
@@ -119,7 +157,7 @@ bloodhound-python -c all -u judith.mader -p judith09 -d certified.htb -ns 10.10.
 
 ## 🔐 Authentication Methods
 
-### Method 1: Username & Password
+### 🔓 Method 1: Username & Password
 
 ```bash
 # Basic password authentication
@@ -132,7 +170,7 @@ bloodhound-python -c all -u certified.htb/judith.mader -p judith09 -ns 10.10.11.
 bloodhound-python -c all -u 'certified.htb\judith.mader' -p judith09 -ns 10.10.11.41
 ```
 
-### Method 2: NTLM Hash (Pass-the-Hash)
+### 🔐 Method 2: NTLM Hash (Pass-the-Hash)
 
 ```bash
 # Using NTLM hash
@@ -145,7 +183,7 @@ bloodhound-python -c all -u judith.mader --hashes aad3b435b51404eeaad3b435b51404
 bloodhound-python -c all -u administrator --hashes aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d32c72a07ceea6 -d certified.htb -ns 10.10.11.41
 ```
 
-### Method 3: Kerberos Authentication
+### 🎫 Method 3: Kerberos Authentication
 
 ```bash
 # Using Kerberos ticket
@@ -159,7 +197,7 @@ bloodhound-python -c all -u judith.mader -d certified.htb -ns 10.10.11.41 -k --k
 bloodhound-python -c all -u judith.mader -d certified.htb -ns 10.10.11.41 --aesKey <aes_key>
 ```
 
-### Method 4: No Password (with .ccache file)
+### 📜 Method 4: No Password (with .ccache file)
 
 ```bash
 # Set Kerberos ticket cache
@@ -169,7 +207,7 @@ export KRB5CCNAME=/tmp/krb5cc_judith.mader
 bloodhound-python -c all -u judith.mader -d certified.htb -ns 10.10.11.41 -k --no-pass
 ```
 
-### Method 5: Interactive Password Prompt
+### 🔒 Method 5: Interactive Password Prompt
 
 ```bash
 # Prompt for password (more secure, no password in bash history)
@@ -184,7 +222,7 @@ bloodhound-python -c all -u judith.mader -d certified.htb -ns 10.10.11.41
 ### Available Collection Methods
 
 | Method | Description | What It Collects |
-|--------|-------------|------------------|
+|:-------|:------------|:-----------------|
 | **all** | All collection methods | Everything below |
 | **group** | Group memberships | Groups and members |
 | **localadmin** | Local admin rights | Local admin relationships |
@@ -218,7 +256,7 @@ bloodhound-python -c group,acl,trusts -u judith.mader -p judith09 -d certified.h
 bloodhound-python -c group,localadmin,trusts,acl,container,objectprops -u judith.mader -p judith09 -d certified.htb -ns 10.10.11.41
 ```
 
-### Method Comparison
+### ⚡ Method Comparison
 
 ```bash
 # Quick enumeration (fastest)
@@ -334,7 +372,7 @@ bloodhound-python -c all -u judith.mader -p judith09 -d certified.htb -ns 10.10.
 
 ### Output Files Generated
 
-Without `--zip`:
+**Without `--zip`:**
 ```
 20241127163045_computers.json
 20241127163045_users.json
@@ -345,7 +383,7 @@ Without `--zip`:
 20241127163045_containers.json
 ```
 
-With `--zip`:
+**With `--zip`:**
 ```
 20241127163045_bloodhound.zip (contains all JSON files)
 ```
@@ -439,7 +477,7 @@ bloodhound-python -c group,trusts -u lowpriv -p password123 -d certified.htb -ns
 ### Feature Comparison
 
 | Feature | bloodhound-python | SharpHound |
-|---------|------------------|------------|
+|:--------|:-----------------|:-----------|
 | **Platform** | Linux/Remote | Windows/Local |
 | **Execution** | No code on target | Runs on target |
 | **Sessions** | ❌ Limited | ✅ Full |
@@ -466,16 +504,20 @@ bloodhound-python -c all -u judith.mader -p judith09 -d certified.htb -ns 10.10.
 ### When to Use Each
 
 **Use bloodhound-python when:**
-- ✅ You have valid credentials but no Windows access
-- ✅ You want to enumerate remotely from Linux
-- ✅ You need stealth (no code execution on target)
-- ✅ You're doing initial reconnaissance
+```
+[✓] You have valid credentials but no Windows access
+[✓] You want to enumerate remotely from Linux
+[✓] You need stealth (no code execution on target)
+[✓] You're doing initial reconnaissance
+```
 
 **Use SharpHound when:**
-- ✅ You have shell access on Windows
-- ✅ You need session enumeration
-- ✅ You need local admin detection
-- ✅ You want faster/more complete enumeration
+```
+[✓] You have shell access on Windows
+[✓] You need session enumeration
+[✓] You need local admin detection
+[✓] You want faster/more complete enumeration
+```
 
 ---
 
@@ -597,7 +639,7 @@ python3 -m site
 ls -lh *bloodhound* *_*.json
 
 # Verify JSON files
-for file in *.json; do 
+for file in *.json; do
     echo "Checking $file"
     jq empty "$file" && echo "✓ Valid JSON" || echo "✗ Invalid JSON"
 done
@@ -713,16 +755,18 @@ bloodhound-python -c all -u captured_user -p cracked_pass -d certified.htb -ns 1
 
 ## 💡 Pro Tips
 
-1. **Always use --zip** - Makes import to BloodHound cleaner
-2. **Start with 'all' collection** - Get complete picture first
-3. **Save output to organized directories** - Use timestamps and target names
-4. **Add domains to /etc/hosts** - Prevents DNS issues
-5. **Use pass-the-hash when possible** - Don't crack if you don't need to
-6. **Combine with other tools** - CME, Impacket suite for comprehensive recon
-7. **Run multiple times** - User sessions change, run during business hours
-8. **Document your findings** - Keep track of credentials and paths found
-9. **Use --exclude-dcs for stealth** - Reduces queries to domain controllers
-10. **Verify JSON validity** - Check files before importing to BloodHound
+```
+[01] Always use --zip - Makes import to BloodHound cleaner
+[02] Start with 'all' collection - Get complete picture first
+[03] Save output to organized directories - Use timestamps and target names
+[04] Add domains to /etc/hosts - Prevents DNS issues
+[05] Use pass-the-hash when possible - Don't crack if you don't need to
+[06] Combine with other tools - CME, Impacket suite for comprehensive recon
+[07] Run multiple times - User sessions change, run during business hours
+[08] Document your findings - Keep track of credentials and paths found
+[09] Use --exclude-dcs for stealth - Reduces queries to domain controllers
+[10] Verify JSON validity - Check files before importing to BloodHound
+```
 
 ---
 
@@ -744,25 +788,31 @@ bloodhound-python -c all -u judith.mader -p judith09 -d certified.htb -ns 10.10.
 ### Detection Considerations
 
 **What defenders might see:**
-- LDAP queries from unusual source
-- Multiple LDAP binds in short time
-- Queries for sensitive attributes (adminCount, etc.)
-- SMB connections for session enumeration
+```
+[!] LDAP queries from unusual source
+[!] Multiple LDAP binds in short time
+[!] Queries for sensitive attributes (adminCount, etc.)
+[!] SMB connections for session enumeration
+```
 
 **Mitigation:**
-- Use compromised internal system as jump box
-- Spread out collection over time
-- Use legitimate admin account if possible
-- Consider using SharpHound on compromised Windows box instead
+```
+[→] Use compromised internal system as jump box
+[→] Spread out collection over time
+[→] Use legitimate admin account if possible
+[→] Consider using SharpHound on compromised Windows box instead
+```
 
 ---
 
 ## 🔗 Useful Resources
 
-- **BloodHound.py GitHub**: https://github.com/fox-it/BloodHound.py
-- **BloodHound Documentation**: https://bloodhound.readthedocs.io/
-- **BloodHound GUI**: https://github.com/BloodHoundAD/BloodHound
-- **BloodHound Cypher Queries**: https://github.com/hausec/Bloodhound-Custom-Queries
+| Resource | URL |
+|:---------|:----|
+| 🔗 BloodHound.py GitHub | https://github.com/fox-it/BloodHound.py |
+| 📖 BloodHound Documentation | https://bloodhound.readthedocs.io/ |
+| 💻 BloodHound GUI | https://github.com/BloodHoundAD/BloodHound |
+| 🔍 Custom Cypher Queries | https://github.com/hausec/Bloodhound-Custom-Queries |
 
 ---
 
@@ -791,4 +841,4 @@ proxychains bloodhound-python -c all -u USER -p PASS -d DOMAIN -ns DC_IP --zip
 
 ---
 
-**Created by NetRunner | For Ethical Hacking & Penetration Testing** 🎓🔐
+**Created by Claude | For Ethical Hacking & Penetration Testing** 🎓🔐

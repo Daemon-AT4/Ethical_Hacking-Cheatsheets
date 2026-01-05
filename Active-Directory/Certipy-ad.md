@@ -1,10 +1,8 @@
-I'll search for information about Certipy-ad and the HTB EscapeTwo writeup to create a comprehensive cheat sheet.# 🔐 Certipy-AD Cheat Sheet
-
 > **A comprehensive guide for Active Directory Certificate Services enumeration and exploitation using Certipy-ad**
 
 ---
 
-## 📋 Table of Contents
+## 📋 >_ Table.Of.Contents()
 
 - [Overview](#-overview)
 - [Installation](#-installation)
@@ -19,16 +17,24 @@ I'll search for information about Certipy-ad and the HTB EscapeTwo writeup to cr
 
 ## 🎯 Overview
 
+```
+> Loading module: Certipy_AD.dll...
+> Initializing certificate exploitation engine...
+> Status: READY
+```
+
 **Certipy-ad** is an offensive security tool designed to enumerate and exploit Active Directory Certificate Services (AD CS) misconfigurations. It supports detection and exploitation of ESC1-ESC16 vulnerabilities, making it essential for penetration testing AD environments.
 
 ### 🔑 Key Capabilities
 
-- 🔍 **Enumeration**: Identify vulnerable certificate templates and CAs
-- 🎫 **Certificate Requests**: Request certificates with custom attributes
-- 🔓 **Authentication**: Use certificates for Kerberos authentication and NT hash retrieval
-- 🛠️ **Template Manipulation**: Modify certificate templates to create exploitation paths
-- 👤 **Shadow Credentials**: Add Key Credential Links for account takeover
-- 🏆 **Golden Certificates**: Forge certificates using compromised CA keys
+| Function | Description | Icon |
+|:---------|:------------|:----:|
+| **Enumeration** | Identify vulnerable certificate templates and CAs | 🔍 |
+| **Certificate Requests** | Request certificates with custom attributes | 🎫 |
+| **Authentication** | Use certificates for Kerberos auth and NT hash retrieval | 🔓 |
+| **Template Manipulation** | Modify certificate templates to create exploitation paths | 🛠️ |
+| **Shadow Credentials** | Add Key Credential Links for account takeover | 👤 |
+| **Golden Certificates** | Forge certificates using compromised CA keys | 🏆 |
 
 ---
 
@@ -101,7 +107,7 @@ certipy-ad auth -pfx administrator.pfx -ldap-shell -dc-ip 10.10.11.51
 ### 🔧 Global Flags
 
 | Flag | Description | Example |
-|------|-------------|---------|
+|:-----|:------------|:--------|
 | `-u`, `-username` | Username for authentication | `-u user@domain.local` |
 | `-p`, `-password` | Password for authentication | `-p 'Password123'` |
 | `-hashes` | NTLM hash (pass-the-hash) | `-hashes ':NTHASH'` or `-hashes 'LMHASH:NTHASH'` |
@@ -127,7 +133,7 @@ certipy-ad find [options]
 #### 📊 Key Flags
 
 | Flag | Description |
-|------|-------------|
+|:-----|:------------|
 | `-vulnerable` | Show only vulnerable templates |
 | `-enabled` | Show only enabled templates |
 | `-text` | Output as formatted text file |
@@ -162,7 +168,7 @@ certipy-ad req [options]
 #### 📊 Key Flags
 
 | Flag | Description |
-|------|-------------|
+|:-----|:------------|
 | `-ca <name>` | Certificate Authority name |
 | `-template <name>` | Certificate template name |
 | `-upn <upn>` | User Principal Name for SAN |
@@ -203,7 +209,7 @@ certipy-ad auth -pfx <cert.pfx> [options]
 #### 📊 Key Flags
 
 | Flag | Description |
-|------|-------------|
+|:-----|:------------|
 | `-pfx <file>` | Path to certificate (PFX/P12) |
 | `-password <pass>` | PFX file password |
 | `-no-save` | Don't save TGT to file |
@@ -240,7 +246,7 @@ certipy-ad template -template <name> [options]
 #### 📊 Key Flags
 
 | Flag | Description |
-|------|-------------|
+|:-----|:------------|
 | `-template <name>` | Certificate template name |
 | `-save-configuration <file>` | Save current config to JSON |
 | `-write-configuration <file>` | Apply config from JSON file |
@@ -274,7 +280,7 @@ certipy-ad shadow <action> [options]
 #### 📊 Actions & Flags
 
 | Action | Description |
-|--------|-------------|
+|:-------|:------------|
 | `auto` | Automatically exploit (add, auth, restore) |
 | `list` | List all Key Credentials |
 | `add` | Add new Key Credential |
@@ -283,7 +289,7 @@ certipy-ad shadow <action> [options]
 | `info` | Display detailed information |
 
 | Flag | Description |
-|------|-------------|
+|:-----|:------------|
 | `-account <target>` | Target account |
 | `-device-id <guid>` | Specific device ID |
 | `-out <file>` | Output certificate file |
@@ -314,14 +320,14 @@ certipy-ad account <action> -user <name> [options]
 #### 📊 Actions & Flags
 
 | Action | Description |
-|--------|-------------|
+|:-------|:------------|
 | `create` | Create new account |
 | `read` | Read account properties |
 | `update` | Modify existing account |
 | `delete` | Delete account |
 
 | Flag | Description |
-|------|-------------|
+|:-----|:------------|
 | `-user <name>` | SAM account name |
 | `-pass <password>` | Set password |
 | `-dns <hostname>` | Set DNS hostname |
@@ -351,7 +357,7 @@ certipy-ad ca -ca <name> [options]
 #### 📊 Key Flags
 
 | Flag | Description |
-|------|-------------|
+|:-----|:------------|
 | `-ca <name>` | CA name |
 | `-list-templates` | List enabled templates |
 | `-enable-template <name>` | Enable template on CA |
@@ -383,7 +389,7 @@ certipy-ad forge [options]
 #### 📊 Key Flags
 
 | Flag | Description |
-|------|-------------|
+|:-----|:------------|
 | `-ca-pfx <file>` | CA certificate/key (for golden cert) |
 | `-ca-password <pass>` | CA PFX password |
 | `-upn <upn>` | UPN for certificate |
@@ -412,7 +418,7 @@ certipy-ad relay -target <proto://host> [options]
 #### 📊 Key Flags
 
 | Flag | Description |
-|------|-------------|
+|:-----|:------------|
 | `-target <proto://host>` | Target (http:// or rpc://) |
 | `-ca <name>` | CA name (for RPC) |
 | `-template <name>` | Certificate template |
@@ -429,9 +435,11 @@ certipy-ad relay -target <proto://host> [options]
 
 ### 📋 Prerequisites
 
-- ✅ Compromised account with write access to a certificate template
-- ✅ Membership in groups with template modification rights (e.g., Cert Publishers)
-- ✅ Access to Active Directory Certificate Services
+```
+[✓] Compromised account with write access to a certificate template
+[✓] Membership in groups with template modification rights (e.g., Cert Publishers)
+[✓] Access to Active Directory Certificate Services
+```
 
 ### 🔄 Step-by-Step Exploitation
 
@@ -541,14 +549,18 @@ certipy-ad auth -pfx administrator.pfx
 
 ### 🎯 Scenario Overview
 
-In HTB EscapeTwo, the exploitation path involves:
-
-1. **Initial Access**: Credentials for `rose` → find SQL admin password → shell as `sql_svc`
-2. **Lateral Movement**: Find `ryan` credentials → WinRM access
-3. **Privilege Escalation**: `ryan` has `WriteOwner` on `ca_svc` account
-4. **Account Takeover**: Use BloodyAD to take ownership and grant permissions
-5. **Shadow Credentials**: Add shadow credential to `ca_svc`
-6. **ESC4 Exploitation**: `ca_svc` is in Cert Publishers group → modify template → escalate to Administrator
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  HTB ESCAPETWO - EXPLOITATION PATH                                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  [1] Initial Access: rose creds → SQL admin password → shell as sql_svc    │
+│  [2] Lateral Movement: Find ryan credentials → WinRM access                 │
+│  [3] Privilege Escalation: ryan has WriteOwner on ca_svc account           │
+│  [4] Account Takeover: Use BloodyAD for ownership + permissions            │
+│  [5] Shadow Credentials: Add shadow credential to ca_svc                    │
+│  [6] ESC4 Exploitation: ca_svc in Cert Publishers → modify template → pwn  │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ### 🔑 Key Commands from HTB EscapeTwo
 
@@ -608,17 +620,21 @@ certipy-ad forge -ca-pfx ca.pfx -upn administrator@domain.local -out golden.pfx
 
 ### ⚠️ Operational Security
 
-- 🔒 **Always backup templates** before modification
-- 🧹 **Clean up** after testing (restore configurations)
-- 📝 **Document** request IDs for later retrieval
-- ⏰ **Note certificate validity periods** for persistence planning
+```
+[🔒] Always backup templates before modification
+[🧹] Clean up after testing (restore configurations)
+[📝] Document request IDs for later retrieval
+[⏰] Note certificate validity periods for persistence planning
+```
 
 ### 🎯 Enumeration Tips
 
-- 🔍 Start with `-vulnerable -enabled` for quick wins
-- 📊 Use `-json` output for parsing with tools like `jq`
-- 🎭 Check group memberships (Cert Publishers is key for ESC4)
-- 🌐 Enumerate with BloodHound for WriteOwner/GenericAll on service accounts
+```
+[🔍] Start with -vulnerable -enabled for quick wins
+[📊] Use -json output for parsing with tools like jq
+[🎭] Check group memberships (Cert Publishers is key for ESC4)
+[🌐] Enumerate with BloodHound for WriteOwner/GenericAll on service accounts
+```
 
 ### 🚀 Common Attack Chains
 
@@ -631,7 +647,7 @@ ManageCA + ManageCertificates → ESC7 → Certificate → Compromise
 ### 🔧 Troubleshooting
 
 | Error | Solution |
-|-------|----------|
+|:------|:---------|
 | `CERTSRV_E_TEMPLATE_DENIED` | User not authorized for template - check enrollment rights |
 | `Object SID mismatch` | Strong Certificate Mapping enabled - use `-sid` flag |
 | `INSUFF_ACCESS_RIGHTS` | Need GenericAll/WriteOwner - check permissions |
@@ -641,11 +657,41 @@ ManageCA + ManageCertificates → ESC7 → Certificate → Compromise
 
 ## 📚 References
 
-- 🔗 [Certipy GitHub Wiki](https://github.com/ly4k/Certipy/wiki)
-- 📄 [Certified Pre-Owned Whitepaper](https://specterops.io/wp-content/uploads/sites/3/2022/06/Certified_Pre-Owned.pdf)
-- 🎓 [HackTheBox EscapeTwo Writeup](https://0xdf.gitlab.io/2025/05/24/htb-escapetwo.html)
-- 🛡️ [ADCS Attack Paths - The Hacker Recipes](https://www.thehacker.recipes/ad/movement/adcs)
+| Resource | URL |
+|:---------|:----|
+| 🔗 Certipy GitHub Wiki | https://github.com/ly4k/Certipy/wiki |
+| 📄 Certified Pre-Owned Whitepaper | https://specterops.io/wp-content/uploads/sites/3/2022/06/Certified_Pre-Owned.pdf |
+| 🛡️ ADCS Attack Paths - Hacker Recipes | https://www.thehacker.recipes/ad/movement/adcs |
 
 ---
 
-**Created for HTB: EscapeTwo** | **Last Updated: 2025** | **Certipy Version: 5.0.2+**
+<div align="center">
+
+## 👤 >_ Author.Info()
+
+```
+╔══════════════════════════════════════════════════════════════╗
+║                     [ NETRUNNER PROFILE ]                    ║
+╠══════════════════════════════════════════════════════════════╣
+║  HANDLE      :  0xNetrunner                                  ║
+║  CLASS       :  4th Year Ethical Hacking Student             ║
+║  SPECIALTY   :  AD CS Exploitation | Certificate Attacks     ║
+║  STATUS      :  Active                                       ║
+╚══════════════════════════════════════════════════════════════╝
+```
+
+[![GitHub](https://img.shields.io/badge/GitHub-0xNetrunner-181717?style=for-the-badge&logo=github)](https://github.com/00xNetrunner)
+
+---
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                  [ END OF TRANSMISSION ]                      ║
+║                    HACK THE PLANET! 🌐                        ║
+╚═══════════════════════════════════════════════════════════════╝
+```
+
+![Certipy](https://img.shields.io/badge/TOOL-Certipy--AD-orange?style=flat-square)
+![ADCS](https://img.shields.io/badge/ADCS-EXPLOITATION-red?style=flat-square)
+
+</div>
